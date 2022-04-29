@@ -23,7 +23,7 @@ function sortByHeight(arr) {
   // remove line with error and write your code here
 
   index_arr = [];
-  short_arr = [];
+  sort_arr = [];
   result_arr = [];
   count = 0;
 
@@ -31,16 +31,16 @@ function sortByHeight(arr) {
     if (arr[i] == -1) {
       index_arr.push(i);
     } else {
-      short_arr.push(arr[i]);
+      sort_arr.push(arr[i]);
     }
   } 
-  short_arr.sort(compareNumeric);
+  sort_arr.sort(compareNumeric);
 
   for (let i = 0; i < arr.length; i++) {
     if (index_arr.includes(i) ) {
       result_arr.push(-1);
     } else {
-      result_arr.push(short_arr[count++]);
+      result_arr.push(sort_arr[count++]);
     }
   }
   return result_arr;
