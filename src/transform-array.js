@@ -30,18 +30,30 @@ function transform(arr) {
     if (discard_arr.includes(arr[i])) {
       switch (arr[i]) {
         case '--discard-next':
+          if (i == arr.length - 1) continue;
+          if (arr[i+2] == '--double-prev' || arr[i+2] == '--discard-prev') {
+            i ++
+          }
           i++;
           continue;
 
         case '--discard-prev':
+          if (i == 0) continue;
           arr_result.pop();
           continue;
           
         case '--double-next':
+          if (i == arr.length - 1) continue;
+          if (arr[i+2] == '--discard-prev') {
+            arr_result.push(arr[i + 1]);
+            i += 2;
+            continue;
+          }
           arr_result.push(arr[i + 1]);
           continue;
           
         case '--double-prev':
+          if (i == 0) continue;
           arr_result.push(arr[i - 1]);
           continue;
       }
